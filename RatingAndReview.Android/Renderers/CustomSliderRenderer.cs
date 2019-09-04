@@ -44,6 +44,7 @@ namespace RatingAndReview.Droid.Renderers
                 if ((touchX >= (p + j)) && (touchX <= (k + j)))
                 {
                     slider.SetSelectedPosition((int)i);
+                    slider.SetBackgroundColorPosition((int)i);
                     System.Diagnostics.Debug.WriteLine($"{i}");
                     break;
                 }

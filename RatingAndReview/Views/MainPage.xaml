@@ -5,13 +5,13 @@
              xmlns:local="clr-namespace:RatingAndReview.Controls"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="8">
         <Label Text="Welcome to Xamarin Forms and Prism!" />
         <local:RatingSlider x:Name="positionSlider"
                             HorizontalOptions="FillAndExpand"
                             ItemSpacing="5"
-                            SelectedPosition="0"
-                            NumberOfItems="5" />
+                            SelectedPosition="{Binding SelectedPosition}"
+                            NumberOfItems="{Binding NumberOfItems}" />
     </StackLayout>
 
 </ContentPage>

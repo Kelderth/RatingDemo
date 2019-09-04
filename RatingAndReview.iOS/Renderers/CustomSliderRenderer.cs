@@ -43,6 +43,7 @@ namespace RatingAndReview.iOS.Renderers
                 if ((location.X >= (p + j)) && (location.X <= (k + j)))
                 {
                     slider.SetSelectedPosition((int)i);
+                    slider.SetBackgroundColorPosition((int)i);
                     break;
                 }
                 p = k;

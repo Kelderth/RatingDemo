@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RatingAndReview.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
@@ -16,7 +17,7 @@ namespace RatingAndReview.Controls
             set { SetValue(SelectedPositionProperty, value); }
         }
 
-        public static readonly BindableProperty ItemSpacingProperty = BindableProperty.Create(nameof(ItemSpacing), typeof(double), typeof(RatingSlider), (double)5.0f);
+        public static readonly BindableProperty ItemSpacingProperty = BindableProperty.Create(nameof(ItemSpacing), typeof(double), typeof(RatingSlider), (double)0.0f);
 
         public double ItemSpacing
         {
@@ -24,7 +25,7 @@ namespace RatingAndReview.Controls
             set { SetValue(ItemSpacingProperty, value); }
         }
 
-        public static readonly BindableProperty NumberOfItemsProperty = BindableProperty.Create(nameof(NumberOfItems), typeof(int), typeof(RatingSlider), 5);
+        public static readonly BindableProperty NumberOfItemsProperty = BindableProperty.Create(nameof(NumberOfItems), typeof(int), typeof(RatingSlider), 6);
 
         public int NumberOfItems
         {
@@ -69,6 +70,7 @@ namespace RatingAndReview.Controls
 
         // GLOBAL PROPERTIES
         private IList<BoxView> boxes;
+        public static int itemPosition;
 
         public RatingSlider()
         {
@@ -86,6 +88,8 @@ namespace RatingAndReview.Controls
 
             // Setup The Items within the GRID Layout.
             SetupItems();
+
+            itemPosition = SelectedPosition;
         }
 
         /// <summary>
@@ -180,9 +184,14 @@ namespace RatingAndReview.Controls
         /// <param name="position">Rating picked within the RatingSlider</param>
         public void SetSelectedPosition(int position)
         {
-            OnSelectedPositionChanged(this, new SelectedPositionChangedEventArgs(position));
-
+            //OnSelectedPositionChanged(this, new SelectedPositionChangedEventArgs(position));
             SelectedPosition = position;
         }
+
+        public void SetBackgroundColorPosition(int position)
+        {
+             ItemSelectedColor = position <= 2 ? Colors.StarRed : position <= 3 ? Colors.StarOrange : position <= 4 ? Colors.StarYellow : Colors.StarGreen;
+        }
+
     }
 }
