@@ -70,7 +70,6 @@ namespace RatingAndReview.Controls
 
         // GLOBAL PROPERTIES
         private IList<BoxView> boxes;
-        public static int itemPosition;
 
         public RatingSlider()
         {
@@ -88,8 +87,6 @@ namespace RatingAndReview.Controls
 
             // Setup The Items within the GRID Layout.
             SetupItems();
-
-            itemPosition = SelectedPosition;
         }
 
         /// <summary>

@@ -1,26 +1,44 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
-using RatingAndReview.Controls;
+﻿using Prism.Navigation;
+using Prism.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace RatingAndReview.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        public MainPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        private int _selectedPosition;
+
+        public int SelectedPosition
         {
-            Title = "Main Page";
-            MyMessage();
+            get { return _selectedPosition; }
+            set
+            {
+                SetProperty(ref _selectedPosition, value);
+                Console.Write($"\r\n=== Selected Position: {_selectedPosition} ===\r\n");
+                RatingSelected(_selectedPosition);
+            }
         }
 
-        public void MyMessage()
+        private int _numberOfItems;
+
+        public int NumberOfItems
         {
-            Console.WriteLine("==================This is a Test From MainPageViewModel: " + RatingSlider.itemPosition);
+            get { return _numberOfItems; }
+            set { _numberOfItems = value; }
         }
+
+        public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
+            : base(navigationService, pageDialogService)
+        {
+            Title = "Main Page";
+            _numberOfItems = 5;
+        }
+
+        public void RatingSelected(int ratingSelected)
+        {
+            DialogService.DisplayAlertAsync("Rating & Review", $"Your rating choice was: {ratingSelected.ToString()}", "OK");
+        }
+
     }
 }

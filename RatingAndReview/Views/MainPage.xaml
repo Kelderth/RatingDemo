@@ -6,12 +6,22 @@
              Title="{Binding Title}">
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="8">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+        <Label Text="RATING AND REVIEW"
+               FontAttributes="Bold"
+               FontSize="Large"
+               HorizontalTextAlignment="Center"
+               Margin="20,20,20,20"
+               TextColor="CadetBlue"/>
         <local:RatingSlider x:Name="positionSlider"
                             HorizontalOptions="FillAndExpand"
                             ItemSpacing="5"
-                            SelectedPosition="{Binding SelectedPosition}"
-                            NumberOfItems="{Binding NumberOfItems}" />
+                            SelectedPosition="{Binding SelectedPosition, Mode=TwoWay}"
+                            NumberOfItems="{Binding NumberOfItems}"/>
+        <Label Text="{Binding SelectedPosition}"
+               FontAttributes="Bold"
+               FontSize="Large"
+               HorizontalTextAlignment="Center"
+               TextColor="MediumVioletRed"/>
     </StackLayout>
 
 </ContentPage>
