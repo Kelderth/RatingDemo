@@ -16,7 +16,7 @@ namespace RatingAndReview.ViewModels
             {
                 SetProperty(ref _selectedPosition, value);
                 Console.Write($"\r\n=== Selected Position: {_selectedPosition} ===\r\n");
-                RatingSelected(_selectedPosition);
+                //RatingSelected(_selectedPosition);
             }
         }
 
